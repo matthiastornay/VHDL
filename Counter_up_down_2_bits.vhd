@@ -1,20 +1,20 @@
--- Compteur/Décompteur 2 bits
+-- Counter Up/Down 2 bits
 -- Matthias Tornay
 
--- Déclaration des Librairies
+-- Libraries declaration
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
--- Description de l'entité
-entity Compteur_decompteur_2B is
-	port(CLK, Init, Sens : in std_logic;
+-- Entity description
+entity counter_2B is
+	port(CLK, Init, Sensor : in std_logic;
 	     Q : out std_logic_vector(1 downto 0));
 
-end Compteur_decompteur_2B;
+end counter_2B;
 
--- Déclaration du comportement
-architecture arch_Compteur_decompteur_2B of Compteur_decompteur_2B is
+-- DÃ©claration du comportement
+architecture arch_counter_2B of counter_2B is
 
 signal QQ : std_logic_vector (1 downto 0);
 
@@ -42,4 +42,4 @@ begin
 
 Q <= QQ;
 
-end arch_Compteur_decompteur_2B;
+end arch_counter_2B;
