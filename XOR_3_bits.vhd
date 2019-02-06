@@ -1,18 +1,18 @@
 -- XOR 3 bits
 -- Matthias Tornay
 
--- Déclaration des Librairies
+-- Libraries declaration
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Description de l'entité
+-- Entity description
 entity XOR_3_B is
      port(A, B, C : in std_logic;
 	  S : out std_logic);
 
 end XOR_3_B;
 
--- Déclaration du comportement
+-- Behavior
 architecture arch_XOR_3_B of XOR_3_B is
 
 begin
