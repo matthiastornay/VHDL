@@ -13,7 +13,7 @@ entity counter_2B is
 
 end counter_2B;
 
--- Déclaration du comportement
+-- Behavior
 architecture arch_counter_2B of counter_2B is
 
 signal QQ : std_logic_vector (1 downto 0);
