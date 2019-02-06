@@ -1,20 +1,20 @@
--- Démultiplexeur 4 parmi 1
+-- Demultiplexer 1 to 4
 -- Matthias Tornay
 
--- Déclaration des Librairies
+-- Libraries declaration
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Description de l'entité
-entity Demultiplexeur_4C1 is
+-- Entity description
+entity demux_4C1 is
      port(E, D : in std_logic;
 	  Sel : in std_logic_vector (1 downto 0);
 	  S0, S1, S2, S3 : out std_logic);
 
-end DEMUX_14;
+end demux_4C1;
 
--- Déclaration du comportement
-architecture arch_Demultiplexeur_4C1 of Demultiplexeur_4C1 is
+-- Behavior
+architecture arch_demux_4C1 of demux_4C1 is
 
 begin
      with Sel select
@@ -33,7 +33,7 @@ begin
 	  S3 <= ((D) or (E)) when "11",
                 '1' when others;
 	
-end arch_Demultiplexeur_4C1;
+end arch_demux_4C1;
 
 signal white_now : std_logic_vector (2 downto 0);
 
