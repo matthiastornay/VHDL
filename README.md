@@ -1,2 +1,2 @@
 # VHDL
-Some basics VHDL programs I wrote
+Some basic VHDL programs I wrote
