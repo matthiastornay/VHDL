@@ -14,7 +14,7 @@ entity adder_8B is
 
 end adder_8B;
 
--- Déclaration du comportement
+-- Behavior
 architecture arch_adder_8B of adder_8B is
 
 signal Ac : std_logic_vector (9 downto 0);
