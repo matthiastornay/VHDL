@@ -1,18 +1,18 @@
 -- OR 2 bits
 -- Matthias Tornay
 
--- Déclaration des Librairies
+-- Libraries declaration
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Description de l'entité
+-- Entity description
 entity OR_2B is
      port(A, B : in std_logic;
 	  S : out std_logic);
 
 end OR_2B;
 
--- Déclaration du comportement
+-- Behavior
 architecture arch_OR_2B of OR_2B is
 
 begin
