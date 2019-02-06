@@ -1,19 +1,19 @@
--- Bascule D Latch
+-- D Latch
 -- Matthias Tornay
 
--- Déclaration des Librairies
+-- Libraries declaration
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Description de l'entité
-entity Bascule_D_Latch is
+-- Entity description
+entity D_latch is
      port(D, Latch : in std_logic;
 	  Q : out std_logic);
 
-end Bascule_D_Latch;
+end D_latch;
 
--- Déclaration du comportement
-architecture arch_Bascule_D_Latch of Bascule_D_Latch is
+-- Behavior
+architecture arch_D_latch of D_latch is
 
 begin
      process(Latch, D)
@@ -24,4 +24,4 @@ begin
  
      end process;
 
-end arch_Bascule_D_Latch;
+end arch_D_latch;
