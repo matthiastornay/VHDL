@@ -1,12 +1,12 @@
--- Séquenceur
+-- SÃ©quenceur
 -- Matthias Tornay
 
--- Déclaration des Librairies
+-- DÃ©claration des Librairies
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
--- Description de l'entité
+-- Description de l'entitÃ©
 entity Sequenceur is
      port(CLK : in std_logic;
           Preset : in std_logic_vector (1 downto 0);
@@ -14,7 +14,7 @@ entity Sequenceur is
 
 end Sequenceur;
 
--- Déclaration du comportement
+-- DÃ©claration du comportement
 architecture arch_Sequenceur of Sequenceur is
 
 Type Etat_Sequenceur is (ZERO, DEUX, QUATRE, CINQ, SIX, UN, TROIS, SEPT);
@@ -56,4 +56,4 @@ Q <= "000" when Etat = ZERO else
      "110" when Etat = SIX else
      "111" when Etat = SEPT;
 
-end arch_Seq;
+end arch_Sequenceur;
