@@ -1,29 +1,29 @@
--- Bascule D
+-- D flip-flop
 -- Matthias Tornay
 
--- Déclaration des librairies
+-- Libraries declaration
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Description de l'entité
-entity Bascule_D is
+-- Entity description
+entity d_flipflop is
 	port(D, CLK, Set, Reset : in std_logic;
 	     Q : out std_logic);
 
-end Bascule_D;
+end d_flipflop;
 
--- Déclaration du comportement
-architecture arch_Bascule_D of Bascule_D is
+-- Behavior
+architecture arch_d_flipflop of d_flipflop is
 
 begin
      	process(CLK, Set, Reset)
      
 	begin
-		--if (Set = '0') then Q <= '1';		-- Asynchrone
+		--if (Set = '0') then Q <= '1';		-- Asynchronous
    		--elsif (Reset = '0') then Q <= '0';
    		--elsif Rising_edge(CLK) then Q <= D;
    
-		  if Rising_edge(CLK) then		-- Sychrone
+		  if Rising_edge(CLK) then		-- Synchronous
 	    	  	if (Set = '0') then Q <= '1';
 	  		elsif (Reset = '0') then Q <= '0';
 			else Q <= D;
@@ -34,4 +34,4 @@ begin
 
  	end process;
 
-end arch_Bascule_D;
+end arch_d_flipflop;
