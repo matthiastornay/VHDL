@@ -1,4 +1,4 @@
--- Adder 8 bits
+-- LED selector
 -- Matthias Tornay
 
 -- Libraries declaration
