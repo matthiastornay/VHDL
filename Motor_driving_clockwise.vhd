@@ -124,4 +124,4 @@ Ph <= "0000" when Etat = E0 else
 	  "0101" when Etat = E6 else
 	  "0001" when Etat = E7 else
 	  "1001" when Etat = E8;
-end arch_SH;
+end arch_Sens_Horaire;
