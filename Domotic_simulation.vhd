@@ -19,4 +19,4 @@ begin
  	fan <= T and not V;
  	sprayer <= S and T and not V;
 
-end arch_VHDL;
+end arch_simulation;
