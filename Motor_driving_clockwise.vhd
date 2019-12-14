@@ -1,23 +1,23 @@
--- Moteur 1 - Sens Horaire
+-- Motor 1 - Clockwise rotation
 -- Matthias Tornay
 
--- Déclaration des Librairies
+-- Libraries declaration
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 
--- Description de l'entité
-entity Sens_Horaire is
-     port(CLK, sens, blocage, stop, demi_pas : in std_logic;
+-- Entity description
+entity Clockwise_sens is
+     port(CLK, sens, blockage, stop, half_step : in std_logic;
 	  PH : out std_logic_vector(3 downto 0));
 
-end Sens_Horaire;
+end Clockwise_sens;
 
--- Déclaration du comportement
-architecture arch_Sens_Horaire of Sens_Horaire is
+-- Behavior
+architecture arch_Clockwise_sens of Clockwise_sens is
 
-Type Etat_Sens_Horaire is (E0, E1, E2, E3, E4, E5, E6, E7, E8);
-signal Etat: Etat_Sens_Horaire;
+Type State_Clockwise_sens is (E0, E1, E2, E3, E4, E5, E6, E7, E8);
+signal State: State_Clockwise_sens;
 
 begin
 			
@@ -25,88 +25,88 @@ process(CLK)
 
 begin  	
      if rising_Edge() then
-          if (blocage = '1') then 
-	       Etat <= Etat;
+          if (blockage = '1') then 
+	       State <= State;
     
      else
-          if demi_pas = '0' then
+          if half_step = '0' then
 	       if stop = '1' then
-	            case Etat is
- 		         when E0 => Etat <= E0;
-			 when E1 => Etat <= E0;
-			 when E2 => Etat <= E0;
-			 when E3 => Etat <= E0;
-			 when E4 => Etat <= E0;
-			 when E5 => Etat <= E0;
-			 when E6 => Etat <= E0;
-			 when E7 => Etat <= E0;
-			 when E8 => Etat <= E0;
+	            case State is
+ 		         when E0 => State <= E0;
+			 when E1 => State <= E0;
+			 when E2 => State <= E0;
+			 when E3 => State <= E0;
+			 when E4 => State <= E0;
+			 when E5 => State <= E0;
+			 when E6 => State <= E0;
+			 when E7 => State <= E0;
+			 when E8 => State <= E0;
 
 		    end case;
 	else
 		if sens = '1' then 	
-			case Etat is
-				when E0 => Etat <= E2;
-				when E2 => Etat <= E4;
-				when E4 => Etat <= E6;
-				when E6 => Etat <= E8;
-				when E8 => Etat <= E2;
-				when E1 => Etat <= E2;
-				when E3 => Etat <= E2;
-				when E5 => Etat <= E2;
-				when E7 => Etat <= E2;
+			case State is
+				when E0 => State <= E2;
+				when E2 => State <= E4;
+				when E4 => State <= E6;
+				when E6 => State <= E8;
+				when E8 => State <= E2;
+				when E1 => State <= E2;
+				when E3 => State <= E2;
+				when E5 => State <= E2;
+				when E7 => State <= E2;
 			end case;
 		else	
-			case Etat is
-				when E0 => Etat <= E2;
-				when E2 => Etat <= E8;
-				when E8 => Etat <= E6;
-				when E6 => Etat <= E4;
-				when E4 => Etat <= E2;
-				when E1 => Etat <= E2;
-				when E3 => Etat <= E2;
-				when E5 => Etat <= E2;
-				when E7 => Etat <= E2;
+			case State is
+				when E0 => State <= E2;
+				when E2 => State <= E8;
+				when E8 => State <= E6;
+				when E6 => State <= E4;
+				when E4 => State <= E2;
+				when E1 => State <= E2;
+				when E3 => State <= E2;
+				when E5 => State <= E2;
+				when E7 => State <= E2;
 			end case;
 		end if;
 	end if;
  else
 	if Stop = '1' then
-		case Etat is
-				when E0 => Etat <= E0;
-				when E1 => Etat <= E0;
-				when E2 => Etat <= E0;
-				when E3 => Etat <= E0;
-				when E4 => Etat <= E0;
-				when E5 => Etat <= E0;
-				when E6 => Etat <= E0;
-				when E7 => Etat <= E0;
-				when E8 => Etat <= E0;
+		case State is
+				when E0 => State <= E0;
+				when E1 => State <= E0;
+				when E2 => State <= E0;
+				when E3 => State <= E0;
+				when E4 => State <= E0;
+				when E5 => State <= E0;
+				when E6 => State <= E0;
+				when E7 => State <= E0;
+				when E8 => State <= E0;
 		end case;
 	else
 		if sans = '1' then 	
-			case Etat is
-				when E0 => Etat <= E1;
-				when E1 => Etat <= E2;
-				when E2 => Etat <= E3;
-				when E3 => Etat <= E4;
-				when E4 => Etat <= E5;
-				when E5 => Etat <= E6;
-				when E6 => Etat <= E7;
-				when E7 => Etat <= E8;
-				when E8 => Etat <= E1;
+			case State is
+				when E0 => State <= E1;
+				when E1 => State <= E2;
+				when E2 => State <= E3;
+				when E3 => State <= E4;
+				when E4 => State <= E5;
+				when E5 => State <= E6;
+				when E6 => State <= E7;
+				when E7 => State <= E8;
+				when E8 => State <= E1;
 			end case;
 		else	
-			case Etat is
-				when E8 => Etat <= E7;
-				when E7 => Etat <= E6;
-				when E6 => Etat <= E5;
-				when E5 => Etat <= E4;
-				when E4 => Etat <= E3;
-				when E3 => Etat <= E2;
-				when E2 => Etat <= E1;
-				when E1 => Etat <= E8;
-				when E0 => Etat <= E1;
+			case State is
+				when E8 => State <= E7;
+				when E7 => State <= E6;
+				when E6 => State <= E5;
+				when E5 => State <= E4;
+				when E4 => State <= E3;
+				when E3 => State <= E2;
+				when E2 => State <= E1;
+				when E1 => State <= E8;
+				when E0 => State <= E1;
 			end case;
 		end if;
 	end if;
@@ -115,13 +115,13 @@ begin
 end if;	
 end process;
 
-Ph <= "0000" when Etat = E0 else
-	  "1000" when Etat = E1 else
-	  "1010" when Etat = E2 else
-	  "0010" when Etat = E3 else
-	  "0110" when Etat = E4 else
-	  "0100" when Etat = E5 else
-	  "0101" when Etat = E6 else
-	  "0001" when Etat = E7 else
-	  "1001" when Etat = E8;
-end arch_Sens_Horaire;
+Ph <= "0000" when State = E0 else
+	  "1000" when State = E1 else
+	  "1010" when State = E2 else
+	  "0010" when State = E3 else
+	  "0110" when State = E4 else
+	  "0100" when State = E5 else
+	  "0101" when State = E6 else
+	  "0001" when State = E7 else
+	  "1001" when State = E8;
+end arch_Clockwise_sens;
